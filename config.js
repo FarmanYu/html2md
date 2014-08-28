@@ -1,7 +1,8 @@
-{
-	"url":"html url.",
-	"author":"FHY",
-	"title" : "(document title) or html title",
-	"beforeDoc": "(before markdown text)",
-	"afterDoc" : "(after markdown text)"
+module.exports = {
+	"url": "https://github.com/cheeriojs/cheerio",
+	"container": ".markdown-body",
+	"author": "FHY",
+	"title": "",
+	"beforeDoc": "---\nlayout: post\ntitle: <%=title%>\ndescription: <%=description%>\nkeywords: <%=keywords%>\nauthor: <%=author%>\n---",
+	"afterDoc": ""
 }
