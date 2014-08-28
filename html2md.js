@@ -4,6 +4,7 @@ var cheerio = require("cheerio");
 var htmlParser = require("./htmlParser.js");
 var config = require("./config.js");
 var fs = require("fs");
+var path = require("path");
 var _ = require("underscore");
 
 if (!config.url) {
@@ -23,10 +24,12 @@ function createMarkdown(options) {
 	].join("");
 
 	var today = new Date();
+	var lastPointIndex = path.basename(config.url).lastIndexOf(".");
+	var basename = lastPointIndex == -1 ? path.basename(config.url) : path.basename(config.url).substring(lastPointIndex, -1) ;
 	var filename = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
-	filename += today.getTime() + ".md";
+	filename += '-' + basename + ".md";
 
-	fs.writeFileSync(filename);
+	fs.writeFileSync(filename, markContent);
 }
 
 request(config.url, function(error, response, body) {

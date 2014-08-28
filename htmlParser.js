@@ -118,14 +118,14 @@ htmlParser.prototype = {
 	handle_ol: function(el){
 		var lis = $(el).find("li");
 		var self = this;
-		lis.forEach(function(ele, idx){
-			self.concat(inx+". " + $(ele).text());
+		lis.each(function(ele, idx){
+			self.concat((idx+1)+". " + $(ele).text());
 		});
 	},
 	handle_ul: function(el){
 		var lis = $(el).find("li");
 		var self = this;
-		lis.forEach(function(ele, idx){
+		lis.each(function(ele, idx){
 			self.concat("* " + $(ele).text());
 		});
 	},
