@@ -17,13 +17,18 @@
       "url": "https://github.com/farmanyu/html2md/blob/master/LICENSE-MIT"
     }
   ],
-  "main": "html2md.js",
+  "bin": {
+    "html2md": "bin/html2md"
+  },
+  "main": "index.js",
   "engines": {
     "node": ">= 0.8.0"
   },
   "dependencies": {
     "cheerio": "^0.17.0",
+    "pinyin": "^2.3.3",
     "request": "^2.40.0",
+    "to-markdown": "0.0.3",
     "underscore": "^1.7.0"
   },
   "devDependencies": {},
