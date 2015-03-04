@@ -1,8 +1,8 @@
 var request = require("request");
 var cheerio = require("cheerio");
 var toMarkdown = require("to-markdown").toMarkdown;
-var commander = require("commander");
 var pinyin = require("pinyin");
+var path = require("path");
 var fs = require("fs");
 var util = require("./lib/util");
 var _ = require("underscore");
@@ -29,9 +29,8 @@ function createMarkdown(options) {
 	].join("");
 
 	//name ready.
-	var localFile = util.getDate() + options.title + ".md";
-
-	log(localFile);
+	var localFile = path.join(process.cwd(), util.getDate() + options.title + ".md");
+	log("FilePath:" + localFile);
 	//create file.
 	try{
 		fs.writeFileSync(localFile, markContent);
@@ -46,7 +45,7 @@ exports.run = function(command){
 	
 	var slice = Array.prototype.slice;
 	var args = [],
-		rUrl = /http:\/\/([\w-]+\.)+[\w-]+(\[\w- .\?%&=]*)?/i,
+		rUrl = /^http(s)?:\/\/[A-Za-z0-9\-]+\.[A-Za-z0-9]+[\/=\?%\-&_~`@[\]\:+!]*([^<>])*$/,
 		url = "", 
 		container;
 	if(command[0].toLowerCase() == "node"){
@@ -55,7 +54,7 @@ exports.run = function(command){
 		args = slice.call(command, 1);
 	}
 
-	if(args.length == 0 /*|| rUrl.test(args[0])*/){
+	if(args.length == 0 || !rUrl.test(args[0])){
 		log("Commander: html2md [url] <container>");
 		return;
 	} else{
@@ -87,5 +86,3 @@ exports.run = function(command){
 		}
 	});
 }
-
-exports.run(process.argv);

@@ -1,9 +1,9 @@
 {
-  "name": "html2md",
+  "name": "url2md",
   "description": "html to markdown",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "author": {
-    "name": "FHY(farman)",
+    "name": "farman",
     "email": "yuhongfei1001@163.com",
     "url": "http://farmanyu.github.io/"
   },
